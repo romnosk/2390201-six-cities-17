@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
-* Студент: [Rom Nosk](https://up.htmlacademy.ru/react/17/user/2390201).
-* Наставник: `Неизвестно`.
+* Студент: [Роман Носков](https://up.htmlacademy.ru/react/17/user/2390201).
+* Наставник: [Максим Иванов](https://htmlacademy.ru/profile/id342945).
 
 ---
 
