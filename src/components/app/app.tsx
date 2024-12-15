@@ -6,18 +6,25 @@ import PageNotFound from '../../pages/page-not-found/page-not-found';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../const/const';
 import PrivateRoute from '../private-route/private-route';
+import { Offers } from '../../types/offer';
 
 type AppProps = {
   rentOffersNumber: number;
+  offers: Offers;
 }
 
-function App({rentOffersNumber}: AppProps): JSX.Element {
+function App({rentOffersNumber, offers}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path = {AppRoute.MAIN}
-          element = {<Main rentOffersNumber={rentOffersNumber}/>}
+          element = {
+            <Main
+              rentOffersNumber = {rentOffersNumber}
+              offers = {offers}
+            />
+          }
         />
         <Route
           path = {AppRoute.LOGIN}
@@ -27,15 +34,22 @@ function App({rentOffersNumber}: AppProps): JSX.Element {
           path = {AppRoute.FAVORITES}
           element = {
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NO_AUTH}
+              authorizationStatus = {AuthorizationStatus.AUTH}
             >
-              <Favorites />
+              <Favorites
+                offers = {offers}
+              />
             </PrivateRoute>
           }
         />
         <Route
           path = {AppRoute.OFFER}
-          element = {<Offer />}
+          element = {
+            <Offer
+              offers = {offers}
+              offerID = {offers[11].id}
+            />
+          }
         />
         <Route
           path = '*'

@@ -1,8 +1,13 @@
+import { Offers } from '../../types/offer';
 import Header from '../../components/header/header';
-import PlaceCardFavorites from '../../components/place-card-favorites/place-card-favorites';
+import OffersList from '../../components/offers-list/offers-list';
 import Footer from '../../components/footer/footer';
 
-function Favorites (): JSX.Element {
+type FavoritesProps = {
+  offers: Offers;
+}
+
+function Favorites ({offers}: FavoritesProps): JSX.Element {
   return (
     <div className="page">
       <Header/>
@@ -20,8 +25,11 @@ function Favorites (): JSX.Element {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  <PlaceCardFavorites/>
-                  <PlaceCardFavorites/>
+                  <OffersList
+                    offers={offers}
+                    shownOffersNumber={5}
+                    showFavorites
+                  />
                 </div>
               </li>
 
@@ -34,7 +42,11 @@ function Favorites (): JSX.Element {
                   </div>
                 </div>
                 <div className="favorites__places">
-                  <PlaceCardFavorites/>
+                  <OffersList
+                    offers={offers}
+                    shownOffersNumber={3}
+                    showFavorites
+                  />
                 </div>
               </li>
             </ul>
