@@ -1,13 +1,17 @@
 import Header from '../../components/header/header';
 import Tabs from '../../components/tabs/tabs';
-import PlaceCard from '../../components/place-card/place-card';
 import Map from '../../components/map/map';
+import { Offers } from '../../types/offer';
+import OffersList from '../../components/offers-list/offers-list';
 
 type MainProps = {
   rentOffersNumber: number;
+  offers: Offers;
 }
 
-function Main ({rentOffersNumber}: MainProps): JSX.Element {
+function Main ({rentOffersNumber, offers}: MainProps): JSX.Element {
+  // const firstOffer = offers[0];
+
   return (
     <div className="page page--gray page--main">
       <Header/>
@@ -36,11 +40,11 @@ function Main ({rentOffersNumber}: MainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <PlaceCard/>
-                <PlaceCard/>
-                <PlaceCard/>
-                <PlaceCard/>
-                <PlaceCard/>
+                <OffersList
+                  offers={offers}
+                  shownOffersNumber={5}
+                  showFavorites={false}
+                />
               </div>
             </section>
             <Map/>
