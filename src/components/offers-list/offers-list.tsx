@@ -14,13 +14,15 @@ function OffersList ({offers, shownOffersNumber, showFavorites}: OffersListProps
   // const [activeCardId, setActiveCardId] = useState(0);
   return (
     <>
-      {shownOffers.map((offer) =>
-        (<div key={offer.id}>
-          {showFavorites
-            ? <PlaceCardFavorites offer={offer}/>
-            : <PlaceCard offer={offer}/>}
-        </div>)
-      )}
+      {shownOffers.map((offer) => (
+        <div key={offer.id}>
+          {showFavorites ? (
+            <PlaceCardFavorites offer={offer}/>
+          ) : (
+            <PlaceCard offer={offer}/>
+          )}
+        </div>
+      ))}
     </>
   );
 }
