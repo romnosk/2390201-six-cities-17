@@ -9,11 +9,11 @@ import PrivateRoute from '../private-route/private-route';
 import { Offers } from '../../types/offer';
 
 type AppProps = {
-  rentOffersNumber: number;
+  // rentOffersNumber: number;
   offers: Offers;
 }
 
-function App({rentOffersNumber, offers}: AppProps): JSX.Element {
+function App({offers}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -21,7 +21,7 @@ function App({rentOffersNumber, offers}: AppProps): JSX.Element {
           path = {AppRoute.MAIN}
           element = {
             <Main
-              rentOffersNumber = {rentOffersNumber}
+              // rentOffersNumber = {rentOffersNumber}
               offers = {offers}
             />
           }

@@ -3,14 +3,19 @@ import Tabs from '../../components/tabs/tabs';
 import Map from '../../components/map/map';
 import { Offers } from '../../types/offer';
 import OffersList from '../../components/offers-list/offers-list';
+import { AMSTERDAM_CITY_NAME } from '../../components/const/const';
 
 type MainProps = {
-  rentOffersNumber: number;
+  // rentOffersNumber: number;
   offers: Offers;
 }
 
-function Main ({rentOffersNumber, offers}: MainProps): JSX.Element {
-  // const firstOffer = offers[0];
+function Main ({offers}: MainProps): JSX.Element {
+  let offersToShow = offers.filter((offer) => offer.city.name === AMSTERDAM_CITY_NAME);
+  if (offersToShow.length === 0) {
+    offersToShow = offers;
+  }
+  const firstOffer = offersToShow[0];
 
   return (
     <div className="page page--gray page--main">
@@ -23,7 +28,7 @@ function Main ({rentOffersNumber, offers}: MainProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{rentOffersNumber} places to stay in Amsterdam</b>
+              <b className="places__found">{offersToShow.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -41,13 +46,19 @@ function Main ({rentOffersNumber, offers}: MainProps): JSX.Element {
               </form>
               <div className="cities__places-list places__list tabs__content">
                 <OffersList
-                  offers={offers}
-                  shownOffersNumber={5}
+                  offers={offersToShow}
+                  shownOffersNumber={offersToShow.length}
                   showFavorites={false}
                 />
               </div>
             </section>
-            <Map/>
+            <div className="cities__right-section">
+              <Map
+                city={firstOffer.city}
+                offersOnMap={offersToShow}
+                selectedOffer={firstOffer}
+              />
+            </div>
           </div>
         </div>
       </main>

@@ -16,40 +16,16 @@ function ReviewsForm (): JSX.Element {
     setReviewsFormData({...reviewsFormData, review: value});
   };
 
-  const setTitle = (starValue:string):string => {
-    switch (starValue) {
-      case '1': return 'terribly';
-      case '2': return 'badly';
-      case '3': return 'not bad';
-      case '4': return 'good';
-      case '5': return 'perfect';
-      default: return 'perfect';
-    }
-  };
-
-  type StarElementProps = {
-    starValue:string;
-  };
-
-  function StarElement ({starValue}: StarElementProps): JSX.Element {
-    return (
-      <>
-        <input className="form__rating-input visually-hidden" name="rating" value={starValue} id={`${starValue}-stars`} type="radio" onChange={handleRatingChange}/>
-        <label htmlFor={`${starValue}-stars`} className="reviews__rating-label form__rating-label" title={setTitle(starValue)}>
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-      </>
-    );
-  }
-
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        <StarElement starValue={'5'} />
-        {/* Остальные звёзды пока не заменяются на StarElement, т.к. нарушается поведение при выборе - звёзды не выделяются ховером*/}
+        <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" onChange={handleRatingChange}/>
+        <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
+          <svg className="form__star-image" width="37" height="33">
+            <use xlinkHref="#icon-star"></use>
+          </svg>
+        </label>
 
         <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" type="radio" onChange={handleRatingChange}/>
         <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">

@@ -1,6 +1,7 @@
 import { Offers } from '../../types/offer';
+import { CardType } from '../const/const';
 import PlaceCard from '../../components/place-card/place-card';
-import PlaceCardFavorites from '../place-card-favorites/place-card-favorites';
+import { Fragment } from 'react';
 // import { useState } from 'react';
 
 type OffersListProps = {
@@ -15,13 +16,13 @@ function OffersList ({offers, shownOffersNumber, showFavorites}: OffersListProps
   return (
     <>
       {shownOffers.map((offer) => (
-        <div key={offer.id}>
+        <Fragment key={offer.id}>
           {showFavorites ? (
-            <PlaceCardFavorites offer={offer}/>
+            <PlaceCard cardType={CardType.FAVORITES} offer={offer}/>
           ) : (
-            <PlaceCard offer={offer}/>
+            <PlaceCard cardType={CardType.CITIES} offer={offer}/>
           )}
-        </div>
+        </Fragment>
       ))}
     </>
   );

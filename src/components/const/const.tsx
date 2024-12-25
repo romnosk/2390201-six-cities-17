@@ -15,3 +15,17 @@ export enum AuthorizationStatus {
   NO_AUTH = 'NO_AUTH',
   UNKNOWN = 'UNKNOWN'
 }
+
+export enum CardType {
+  CITIES = 'cities',
+  FAVORITES = 'favorites'
+}
+
+export const CARD_TYPE_CITIES = 'cities';
+export const CARD_TYPE_FAVORITES = 'favorites';
+
+export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+
+export const URL_MARKER_CURRENT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+
+export const AMSTERDAM_CITY_NAME = 'Amsterdam';
